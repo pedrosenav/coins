@@ -34,24 +34,21 @@ export default function Home() {
     })
 
   const countriesCount = activeCountries?.length
+  const coinTotal = countries
+    .map((country) => country.coinCount)
+    .reduce((sum, elem) => (sum += elem))
 
   return (
     <main>
-      <Container className="space-y-4 py-6">
+      <Container className="space-y-6 py-6">
         <header className="flex justify-between">
           <div className="flex flex-col items-center justify-center gap-2">
-            <h2 className="font-lg text-zinc-400">Filters</h2>
-            <div className="flex gap-2">
-              <button className="min-w-[4rem] rounded-sm bg-white px-2 py-1 text-zinc-900">
-                Asc
-              </button>
-              <button className="min-w-[4rem] rounded-sm bg-white px-2 py-1 text-zinc-900">
-                Desc
-              </button>
-            </div>
+            <h2 className="font-lg text-zinc-400">Total de moedas</h2>
+            <span className="text-7xl font-bold">{coinTotal}</span>
           </div>
+
           <div className="flex flex-col items-center justify-center gap-2">
-            <h2 className="font-lg text-zinc-400">Contries total</h2>
+            <h2 className="font-lg text-zinc-400">Países</h2>
             <span className="text-4xl font-bold">{countriesCount}</span>
           </div>
         </header>
