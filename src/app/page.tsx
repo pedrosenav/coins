@@ -49,14 +49,18 @@ export default function Home() {
 
           <div className="flex flex-col items-center justify-center gap-2">
             <h2 className="font-lg text-zinc-400">Países</h2>
-            <span className="text-4xl font-bold">{countriesCount}</span>
+            {isLoading ? (
+              <div className="h-8 w-12 animate-pulse bg-white/50"></div>
+            ) : (
+              <span className="text-4xl font-bold">{countriesCount}</span>
+            )}
           </div>
         </header>
 
         <div className="flex flex-wrap gap-10">
           {isLoading
             ? Array(20)
-                .fill('')
+                .fill(null)
                 .map((_, i) => <CoinCardSkeleton key={i} index={i} />)
             : activeCountries
                 ?.sort((a, b) => b.coinCount - a.coinCount)
